@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lexington Zoning</title>
+
+  <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script> 
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <script src='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.css' rel='stylesheet' />
+  <script src="handlebars-v4.0.5.js"></script>
+  <link href="main.css" rel="stylesheet" />
+</head>
+<body class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Lexington Zoning</h1>
+      <span>Click below to lookup zoning information</span>
+    </div>
+  </div>
+  <div class="row">
+    <div id="map" class="col-md-12"></div>
+  </div>
+  <div class="row">
+    <div id="legend" class="col-md-12">
+      <h2>Legend</h2> <a href="#" id="select-all">Select All</a> <a href="#" id="clear-all">Clear all</a>
+      <div class="row">
+        <div id="legend-0" class="col-md-3"></div>
+        <div id="legend-1" class="col-md-3"></div>
+        <div id="legend-2" class="col-md-3"></div>
+        <div id="legend-3" class="col-md-3"></div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div id="features" class="col-md-12">
+      <h2>Zone:<span id="zone-name"></span></h2>
+      <p>Zoning Ordinace available <a href=""https://www.lexingtonky.gov/zoning-ordinance>here</a>. For specific information on each zone
+      select Article 8 Schedule of Zones.</p>
+      <div id="zone-info">
+          <h3><span id="name"></span>(<span id="code"></span>)</h3>
+          <h4>Intent</h4>
+          <p id="intent"></p>
+          <h4>Principal Uses</h4>
+          <p id="principal_uses"></p>
+          <h4>Accessory Uses</h4>
+          <p id="accessory_uses"></p>
+          <h4>Conditional Uses</h4>
+          <p id="conditional_uses"></p>
+          <h4>Prohibited Uses</h4>
+          <p id="prohibited_uses"></p>
+          <h4>Lot, Yard, and Height Requirements</h4>
+            <h5 class="lot-header">Minimum Lot Size</h5>
+            <p id="min_lot_size"></p>
+            <h5 class="lot-header">Minimum Lot Frontage</h5>
+            <p id="min_lot_frontage"></p>
+            <h5 class="lot-header">Minimum Front Yard</h5>
+            <p id="min_front_yard"></p>
+            <h5 class="lot-header">Minimum Each Side Yard</h5>
+            <p id="min_side_yard"></p>
+            <h5 class="lot-header">Minimum Rear Yard</h5>
+            <p id="min_rear_yard"></p>
+            <h5 class="lot-header">Minimum Useable Open Space</h5>
+            <p id="min_useable_open_space"></p>
+            <h5 class="lot-header">Maximum Lot Coverage</h5>
+            <p id="max_lot_coverage"></p>
+            <h5 class="lot-header">Maximum Height of Building</h5>
+            <p id="max_building_height"></p>
+            <h5 class="lot-header">Off Street Parking</h5>
+            <p id="off_street_parking"></p>
+            <h5 class="lot-header">Special Provisions</h5>
+            <p id="special_provisions"></p>
+      </div>
+    </div>
+  </div>
+  <script src="map.js"></script>
+
+  <script id="legend-template" type="text/x-handlebars-template">
+    <div class="row">
+      <div class="col-md-12">
+        <span style="background-color:{{color}};"class="color-block"></span>
+        <label>
+          <input type="checkbox" checked data-zone-name="{{name}}" class="layer-check"/>
+          {{upcase name}}
+        </label>
+      </div>
+    </div>
+  </script>
+
+
+  <script>
+    var legendSource = $("#legend-template").html();
+    var legendTemplate = Handlebars.compile(legendSource);
+
+    Handlebars.registerHelper('upcase', function (text) {
+      return text.toUpperCase()
+    })
+  </script>
+</body>
+
+</html>

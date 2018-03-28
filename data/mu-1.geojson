@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "mu-1",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "OBJECTID": 61, "ZONING": "MU-1", "DATE_ENTRD": "2005\/08\/09", "LINK": "http:\/\/www.lexingtonky.gov\/Modules\/ShowDocument.aspx?documentid=28672#page=294", "SHAPE_Leng": 505.62255320700001, "SHAPE_Area": 15902.178538100001, "orig_ogc_fid": 60 }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ -84.509770284782036, 38.041802295025853 ], [ -84.509837362590304, 38.041771649112704 ], [ -84.510049378766652, 38.042051424127337 ], [ -84.509713358881257, 38.042239882110934 ], [ -84.50965488382181, 38.042182831531292 ], [ -84.509426047741769, 38.041959566267018 ], [ -84.509498477007639, 38.041926475434671 ], [ -84.509770284782036, 38.041802295025853 ] ] ] ] } }
+]
+}

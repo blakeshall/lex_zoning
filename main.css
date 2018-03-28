@@ -1,0 +1,21 @@
+﻿body
+{
+}
+
+#map {
+  height: 600px;
+}
+
+.subsection {
+  list-style: lower-alpha;
+}
+
+.color-block {
+  min-height: 15px;
+  min-width: 15px;
+  display: inline-block;
+}
+
+.lot-header {
+  font-weight: bold;
+}

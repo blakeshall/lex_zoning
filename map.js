@@ -211,7 +211,7 @@ function loadMap() {
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v8',
     center: [-84.49726196688812, 38.03283139707153],
-    zoom: 12,
+    zoom: 12
   });
   map.on('load', loadData);
   map.on('load', loadLegend)
@@ -220,9 +220,10 @@ function loadMap() {
 function loadData() {
   zoning_folder = "data/"
   zoningData.forEach(function (zone) {
-    var source = new mapboxgl.GeoJSONSource({
+    var source = {
+      type: 'geojson',
       data: zoning_folder + zone.filename
-    });
+    };
     map.addSource(zone.name, source);
     map.addLayer({
       "id": zone.name,

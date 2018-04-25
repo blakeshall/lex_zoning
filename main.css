@@ -2,8 +2,10 @@
 {
 }
 
+.container { width: 100% }
+
 #map {
-  height: 600px;
+  height: 450px;
 }
 
 .subsection {
